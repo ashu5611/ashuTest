@@ -2,28 +2,28 @@ openapi: '3.0.0'
 info:
   version: '1.0.0'
   title: 'Orders'
-  description: Buy or rent spacecrafts
+  description: Get or Save orders
 
 paths:
-  /spacecrafts/{spacecraftId}:
+  /orders/{orderId}:
     parameters:
-      - name: spacecraftId
-        description: The unique identifier of the spacecraft
+      - name: orderId
+        description: The unique order no
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/SpacecraftId'
+          $ref: '#/components/schemas/OrderId'
     get:
-      summary: Read a spacecraft
+      summary: Get Order Details
       responses:
         '200':
-          description: The spacecraft corresponding to the provided `spacecraftId`
+          description: Order Details corresponding to the provided `orderId`
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Spacecraft'
+                $ref: '#/components/schemas/OrderId'
         404:
-          description: No spacecraft found for the provided `spacecraftId`
+          description: No order found for the provided `orderId`
           content:
             application/json:
               schema:
@@ -36,30 +36,22 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    SpacecraftId:
-      description: The unique identifier of a spacecraft
+    OrderId:
+      description: The unique order no
       type: string
-    Spacecraft:
+    OrderDetails:
       type: object
       required:
         - id
-        - name
-        - type
+        - status
+        - amount
       properties:
         id:
-          $ref: '#/components/schemas/SpacecraftId'
-        name:
+          $ref: '#/components/schemas/OrderId'
+        status:
           type: string
-        type:
-          type: string
-          enum:
-            - capsule
-            - probe
-            - satellite
-            - spaceplane
-            - station
-        description:
-          type: string
+        amount:
+          type: number
     Error:
       type: object
       required:
