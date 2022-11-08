@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: API
+metadata:
+  name: petstore
+  description: The Petstore API
+spec:
+  type: openapi
+  lifecycle: design
+  owner: <apim>@inter.ikea.com
+  definition:
+    $text: docs/webAPI/template/BusinessWebAPITemplate.yaml
