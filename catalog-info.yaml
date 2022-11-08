@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: API
 metadata:
-  name: petstore
+  name: orders
   description: The Petstore API
 spec:
   type: openapi
