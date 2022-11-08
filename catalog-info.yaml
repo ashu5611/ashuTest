@@ -7,5 +7,3 @@ spec:
   type: openapi
   lifecycle: design
   owner: <apim>@inter.ikea.com
-  definition:
-    $text: postman/schemas/orders.yaml
