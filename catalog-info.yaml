@@ -7,3 +7,5 @@ spec:
   type: openapi
   lifecycle: design
   owner: <apim>@inter.ikea.com
+  definition:
+   $text: https://petstore.swagger.io/v2/swagger.json
