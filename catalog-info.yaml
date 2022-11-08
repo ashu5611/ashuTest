@@ -8,4 +8,4 @@ spec:
   lifecycle: design
   owner: <apim>@inter.ikea.com
   definition:
-    $text: postman/schemes/orders.yaml
+    $text: postman/schemas/orders.yaml
