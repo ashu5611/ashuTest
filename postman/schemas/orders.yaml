@@ -1,29 +1,29 @@
 openapi: '3.0.0'
 info:
-  version: '1.0.0'
-  title: 'Orders'
-  description: Get or Save orders
+  version: '1.0'
+  title: 'test'
+  description: Buy or rent spacecrafts
 
 paths:
-  /orders/{orderId}:
+  /order/orderid:
     parameters:
-      - name: orderId
-        description: The unique order no
+      - name: spacecraftId
+        description: The unique identifier of the spacecraft
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/OrderId'
+          $ref: '#/components/schemas/SpacecraftId'
     get:
-      summary: Get Order Details
+      summary: Read a spacecraft
       responses:
         '200':
-          description: Order Details corresponding to the provided `orderId`
+          description: The spacecraft corresponding to the provided `spacecraftId`
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/OrderId'
+                $ref: '#/components/schemas/Spacecraft'
         404:
-          description: No order found for the provided `orderId`
+          description: No spacecraft found for the provided `spacecraftId`
           content:
             application/json:
               schema:
@@ -36,22 +36,30 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    OrderId:
-      description: The unique order no
+    SpacecraftId:
+      description: The unique identifier of a spacecraft
       type: string
-    OrderDetails:
+    Spacecraft:
       type: object
       required:
         - id
-        - status
-        - amount
+        - name
+        - type
       properties:
         id:
-          $ref: '#/components/schemas/OrderId'
-        status:
+          $ref: '#/components/schemas/SpacecraftId'
+        name:
           type: string
-        amount:
-          type: number
+        type:
+          type: string
+          enum:
+            - capsule
+            - probe
+            - satellite
+            - spaceplane
+            - station
+        description:
+          type: string
     Error:
       type: object
       required:
